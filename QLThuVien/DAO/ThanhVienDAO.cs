@@ -24,7 +24,7 @@ namespace QLThuVien.DAO
             try
             {
                 conn.Open();
-                String sql = String.Format("INSERT INTO THANHVIEN(TVNAME,TVPHONE, TVEMAIL VALUE('{0}','{1}','{2}'", tv.Name, tv.Phone, tv.Email);
+                String sql = String.Format("INSERT INTO THANHVIEN(TVNAME,TVPHONE, TVEMAIL) VALUES('"+tv.Name+"','"+tv.Phone+"','"+tv.Email+"')");
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 if (cmd.ExecuteNonQuery() > 0) return true;
@@ -44,7 +44,7 @@ namespace QLThuVien.DAO
             try
             {
                 conn.Open();
-                String sql = String.Format("UPDATE THANHVIEN SET TVNAME='{0}', TVPHONE='{1}', TVEMAIL='{2}' WHERE ID={3}", tv.Phone, tv.Email, tv.id);
+                String sql = String.Format("UPDATE THANHVIEN SET TVNAME='"+tv.Name+"', TVPHONE='"+tv.Phone+"', TVEMAIL='"+tv.Email+"' WHERE ID="+tv.id);
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 if (cmd.ExecuteNonQuery() > 0) return true;
@@ -65,7 +65,7 @@ namespace QLThuVien.DAO
             try
             {
                 conn.Open();
-                String sql = String.Format("DELETE FROM THANHVIEN WHERE ID={0}",id);
+                String sql = String.Format("DELETE FROM THANHVIEN WHERE ID="+id.ToString());
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 if (cmd.ExecuteNonQuery() > 0) return true;
